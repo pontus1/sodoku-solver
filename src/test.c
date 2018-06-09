@@ -10,7 +10,7 @@
 void print_arr(int *arr, int length);
 
 int main () {
-  int arr[9][9] = {
+  int sodoku_board[9][9] = {
     {5, 3, 0, 0, 7, 0, 0, 0, 0},
     {6, 0, 0, 1, 9, 5, 0, 0, 0},
     {0, 9, 8, 0, 0, 0, 0, 6, 0},
@@ -35,15 +35,15 @@ int main () {
   int column_7[9];
   int column_8[9];
 
-  create_column(9, 9, arr, column_0, 0);
-  create_column(9, 9, arr, column_1, 1);
-  create_column(9, 9, arr, column_2, 2);
-  create_column(9, 9, arr, column_3, 3);
-  create_column(9, 9, arr, column_4, 4);
-  create_column(9, 9, arr, column_5, 5);
-  create_column(9, 9, arr, column_6, 6);
-  create_column(9, 9, arr, column_7, 7);
-  create_column(9, 9, arr, column_8, 8);
+  create_column(9, 9, sodoku_board, column_0, 0);
+  create_column(9, 9, sodoku_board, column_1, 1);
+  create_column(9, 9, sodoku_board, column_2, 2);
+  create_column(9, 9, sodoku_board, column_3, 3);
+  create_column(9, 9, sodoku_board, column_4, 4);
+  create_column(9, 9, sodoku_board, column_5, 5);
+  create_column(9, 9, sodoku_board, column_6, 6);
+  create_column(9, 9, sodoku_board, column_7, 7);
+  create_column(9, 9, sodoku_board, column_8, 8);
 
   columns[0] = column_0;
   columns[1] = column_1;
@@ -68,15 +68,15 @@ int main () {
   int block_21[9];
   int block_22[9];
 
-  create_block(9, 9, arr, block_00, 0, 0);
-  create_block(9, 9, arr, block_01, 0, 1);
-  create_block(9, 9, arr, block_02, 0, 2);
-  create_block(9, 9, arr, block_10, 1, 0);
-  create_block(9, 9, arr, block_11, 1, 1);
-  create_block(9, 9, arr, block_12, 1, 2);
-  create_block(9, 9, arr, block_20, 2, 0);
-  create_block(9, 9, arr, block_21, 2, 1);
-  create_block(9, 9, arr, block_22, 2, 2);
+  create_block(9, 9, sodoku_board, block_00, 0, 0);
+  create_block(9, 9, sodoku_board, block_01, 0, 1);
+  create_block(9, 9, sodoku_board, block_02, 0, 2);
+  create_block(9, 9, sodoku_board, block_10, 1, 0);
+  create_block(9, 9, sodoku_board, block_11, 1, 1);
+  create_block(9, 9, sodoku_board, block_12, 1, 2);
+  create_block(9, 9, sodoku_board, block_20, 2, 0);
+  create_block(9, 9, sodoku_board, block_21, 2, 1);
+  create_block(9, 9, sodoku_board, block_22, 2, 2);
 
   blocks[0] = block_00;
   blocks[1] = block_01;
@@ -91,8 +91,8 @@ int main () {
   // 1. check if all numbers are valid
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
-      if (!is_valid_number(arr[i][j])) {
-        printf("Error: %d is not a valid number (%d,%d)\n", arr[i][j], i, j);
+      if (!is_valid_number(sodoku_board[i][j])) {
+        printf("Error: %d is not a valid number (%d,%d)\n", sodoku_board[i][j], i, j);
         exit(0);
       }
     }
@@ -100,7 +100,7 @@ int main () {
 
   for (int i = 0; i < 9; i++) {
     // 2. check if rows are valid
-    if (!is_valid_section(arr[i], 9)) {
+    if (!is_valid_section(sodoku_board[i], 9)) {
       printf("Error: a number is used two times in row %d\n", i);
       exit(0);
     }
