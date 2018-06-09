@@ -22,8 +22,6 @@ int main () {
     {0, 0, 0, 0, 8, 0, 0, 7, 9}
   };
 
-  printf("Preparing...\n");
-
   // create array of all columns
   int *columns[9];
 
@@ -100,25 +98,18 @@ int main () {
     }
   }
 
-  // 2. check if rows are valid
   for (int i = 0; i < 9; i++) {
+    // 2. check if rows are valid
     if (!is_valid_section(arr[i], 9)) {
       printf("Error: a number is used two times in row %d\n", i);
       exit(0);
     }
-  }
-
-
-  // 3. check if columns are valid
-  for (int i = 0; i < 9; i++) {
+    // 3. check if columns are valid
     if (!is_valid_section(columns[i], 9)) {
       printf("Error: a number is used two times in column %d\n", i);
       exit(0);
     }
-  }
-
-  // 4. check if blocks are valid
-  for (int i = 0; i < 9; i++) {
+    // 4. check if blocks are valid
     if (!is_valid_section(blocks[i], 9)) {
       printf("Error: a number is used two times in block %d\n", i);
       exit(0);

@@ -1,7 +1,5 @@
 #include "lib.h"
 
-#include <stdio.h>
-
 /**
  * Create an array of numbers from block in soduku board
  *
