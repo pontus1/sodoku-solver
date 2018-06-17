@@ -25,33 +25,20 @@ void create_columns(int r, int c, int from_arr[r][c], int to_arr[r][c])
  */
 void create_blocks(int r, int c, int from_arr[r][c], int to_arr[r][c])
 {
-  int count = 0;
+  int a = 0;
   for (int i = 0; i < 3; i++)
-    for (int j = 0; j < 3; j++)
-      create_block(9, 9, from_arr, to_arr[count++], i, j);
-}
-
-/**
- * Fill an array with numbers from block in soduku board
- *
- * @param r             number of rows in soduku board (9)
- * @param c             number of columns in soduku board (9)
- * @param from_arr      2d array to copy from (soduku board)
- * @param to_arr        array to copy to
- * @param b_r           block row (index of block row)
- * @param b_c           block column (index of block column)
- */
-void create_block(int r, int c, int from_arr[r][c], int to_arr[r], int b_r, int b_c)
-{
-  int r_start = b_r * 3,
-      r_stop = b_r * 3 + 3,
-      c_start = b_c * 3,
-      c_stop = b_c * 3 + 3,
-      count = 0;
-
-  for (int i = r_start; i < r_stop; i++)
-    for (int j = c_start; j < c_stop; j++)
-      to_arr[count++] = from_arr[i][j];
+    for (int j = 0; j < 3; j++) {
+      int r_start = i * 3,
+          r_stop = i * 3 + 3,
+          c_start = j * 3,
+          c_stop = j * 3 + 3,
+          b = 0;
+      for (int k = r_start; k < r_stop; k++)
+        for (int l = c_start; l < c_stop; l++) {
+          to_arr[a][b++] = from_arr[k][l];
+        }
+        a++;
+    }
 }
 
 /**
