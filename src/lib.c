@@ -1,7 +1,38 @@
 #include "lib.h"
 
 /**
- * Create an array of numbers from block in soduku board
+ * Fill 2d array with numbers from columns in soduku board
+ *
+ * @param r             number of rows in soduku board (9)
+ * @param c             number of columns in soduku board (9)
+ * @param from_arr      2d array to copy from (soduku board)
+ * @param to_arr        array to copy to
+ */
+void create_columns(int r, int c, int from_arr[r][c], int to_arr[r][c])
+{
+  for (int i = 0; i < 9; i++)
+    for (int j = 0; j < 9; j++)
+      to_arr[i][j] = from_arr[j][i];
+}
+
+/**
+ * Fill 2d array with numbers from blocks in soduku board
+ *
+ * @param r             number of rows in soduku board (9)
+ * @param c             number of columns in soduku board (9)
+ * @param from_arr      2d array to copy from (soduku board)
+ * @param to_arr        array to copy to
+ */
+void create_blocks(int r, int c, int from_arr[r][c], int to_arr[r][c])
+{
+  int count = 0;
+  for (int i = 0; i < 3; i++)
+    for (int j = 0; j < 3; j++)
+      create_block(9, 9, from_arr, to_arr[count++], i, j);
+}
+
+/**
+ * Fill an array with numbers from block in soduku board
  *
  * @param r             number of rows in soduku board (9)
  * @param c             number of columns in soduku board (9)
@@ -21,23 +52,6 @@ void create_block(int r, int c, int from_arr[r][c], int to_arr[r], int b_r, int 
   for (int i = r_start; i < r_stop; i++)
     for (int j = c_start; j < c_stop; j++)
       to_arr[count++] = from_arr[i][j];
-}
-
-/**
- * Create an array of numbers from column in soduku board
- *
- * @param r             number of rows in soduku board (9)
- * @param c             number of columns in soduku board (9)
- * @param from_arr      2d array to copy from (soduku board)
- * @param to_arr        array to copy to
- * @param column        column index
- */
-void create_column(int r, int c, int from_arr[r][c], int to_arr[c], int column)
-{
-  int count = 0;
-
-  for (int i = 0; i < c; i++)
-    to_arr[count++] = from_arr[i][column];
 }
 
 /**
